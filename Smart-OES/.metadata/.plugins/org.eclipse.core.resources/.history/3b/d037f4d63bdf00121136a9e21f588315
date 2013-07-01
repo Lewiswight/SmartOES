@@ -1,0 +1,5 @@
+import os
+import time
+
+data = os.system("python dpdsrv.py")
+print data

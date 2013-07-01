@@ -1,0 +1,30 @@
+import os
+import time
+
+time.sleep(240)
+
+while True:
+    
+    t = time.time()
+   
+    
+    hostname = "google.com" #example
+    response = os.system("ping -c 1 " + hostname)
+    
+    #and then check the response...
+    if response == 0:
+        with open("./log.txt", "a") as myfile:
+          myfile.write(hostname +"  was up at: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(t)) + chr(13))
+          print hostname, 'is up! at:' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(t))
+          myfile.close()
+    else:
+      print hostname, 'is down!'
+        
+      with open("./log.txt", "a") as myfile:
+          myfile.write(hostname +"  rest at: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(t)) + chr(13))
+          os.system("reboot")
+          myfile.close()
+      break
+    
+      
+    time.sleep(120)
